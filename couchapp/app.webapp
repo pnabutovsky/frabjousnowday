@@ -1,0 +1,14 @@
+{
+  "name": "Frabjous Snow Day",
+  "version" : "0.1.0",
+  "description": "Displays schools closed in MA due to Snow at any given time.",
+  "long_description" : "Displays schools closed in MA due to Snow at any given time.",
+  "launch_path": "/",
+  "url": "http://www.sample.com",
+  "categories": ["learning"],
+  "developer": {
+    "name": "Pavel Nabutovsky",
+    "url": "http://github.com/pnabutovsky"
+  },
+  "default_locale": "en"
+}
