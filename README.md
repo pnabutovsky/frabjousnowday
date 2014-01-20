@@ -24,10 +24,16 @@ Install Node.js dependencies and Grunt
 
 Deploy the Couchapp:
 
-    $ cd couchapp ; erica push http://127.0.0.1:5984/frabjousnowday
+    $ cd couchapp ; erica push http://127.0.0.1:5984/frabjousnowday ; cd ..
 
 Populate the towns and associated GIS data:
 
     $ #TODO: This directory structure will totally change
     $ grunt load-town-topo:"./data/ma_gis/ma_poly_topo.json"
 
+
+One Liners
+---------------------------
+To pull back the TopoJSON of all towns:
+
+    $ curl -X GET "http://127.0.0.1:5984/frabjousnowday/_design/couchapp/_list/topojson/geometries"
