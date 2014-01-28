@@ -3,7 +3,9 @@
     "version": "0.1.0",
     "dependencies": {
         "grunt": ">=0.4.2",
-        "nano": ">=4.3.0"
+        "nano": ">=4.3.0",
+        "d3": ">=3.4.1",
+        "topojson": ">=1.4.6"
     },
     "devDependencies": {
         "grunt-contrib-jshint": ">=0.6.3",

@@ -54,7 +54,7 @@ Deploy the Couchapp:
 Populate the towns and associated GIS data:
 
     $ #TODO: This directory structure will totally change
-    $ grunt load-town-topo:"./data/ma_gis/ma_poly_topo.json"
+    $ grunt load-town-topo:"./data/gis/ma_topo.json"
 
 
 One Liners
