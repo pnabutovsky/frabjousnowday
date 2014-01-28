@@ -3,6 +3,31 @@ O Frabjous Snow Day
 
 TODO: Description
 
+Obtaining the GIS data
+--------------------------
+Massachusetts town boundries can be downloaded as shape files from [mass.gov](http://www.mass.gov/anf/research-and-tech/it-serv-and-support/application-serv/office-of-geographic-information-massgis/datalayers/townsurvey.html). TOWNSSURVEY_POLY.shp provides the desired paths.
+
+
+
+To generate the [TopoJSON](https://github.com/mbostock/topojson) file, you can follow Mike Bostock's [directions](http://bost.ocks.org/mike/map/). Briefly:
+
+Install GDAL by grabbing the proper binary from <http://trac.osgeo.org/gdal/wiki/DownloadingGdalBinaries>. To install on Mac OS X:
+
+    brew install gdal
+
+Install the TopoJSON libary and console tools. You will first need to install Node.js, but this is a project requirement in any case.
+
+    npm install -g topojson
+
+Convert the shape file to GeoJSON using the GDAL toolkit. Massachusetts uses a gridded coordinate system in the shape file. The points must be conveted to logitude and lattitude.
+
+    ogr2ogr -f GeoJSON -t_srs EPSG:4326 ma.json TOWNSSURVEY_POLY.shp
+
+Convert the GeoJSON into a more compact TopoJSON file. Since the original file is at a very high resolution, we will simplify by retaining 6% of the existing geographic points:
+
+    topojson --id-property TOWN --simplify-proportion .06 -o ma_topo.json ma.json
+
+
 
 Application deployment steps
 --------------------------
