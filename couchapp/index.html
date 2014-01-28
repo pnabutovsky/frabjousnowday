@@ -1,9 +1,36 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title></title>
+    <meta charset="utf-8">
+    <title>School Closings</title>
 </head>
 <body>
+    <div id="title">School Closings</div>
 
+    <!-- TODO: Host D3 and Topojson as Couchdb attachments -->
+    <script src="http://d3js.org/d3.v3.min.js"></script>
+    <script src="http://d3js.org/topojson.v0.min.js"></script>
+    <script>
+    var width = 960,
+        height = 1160;
+    var svg = d3.select("body").append("svg")
+        .attr("width", width)
+        .attr("height", height);
+    var projection = d3.geo.albers()
+      .center([0, 42.3])
+      .rotate([71.8, 0])
+      .scale(20000);
+    var path = d3.geo.path()
+      .projection(projection);
+
+    d3.json("/frabjousnowday/MA/topojson", function(error, json) {
+        var poly = topojson.object(json, json.objects.ma);
+        svg.selectAll(".geo")
+           .data(poly.geometries)
+           .enter().append("path")
+           .attr("class", function(d) { return "geo " + d.id; })
+           .attr("d", path);
+    });
+    </script>
 </body>
 </html>
